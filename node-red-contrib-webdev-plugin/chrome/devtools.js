@@ -23,3 +23,12 @@ chrome.devtools.inspectedWindow.onResourceContentCommitted.addListener(function(
 	'content': content} );
   console.log(content);
 })
+
+chrome.devtools.panels.create("NRC-WebDev",
+    "icon_16.png",
+    "editorpanel.html",
+	    function(panel) {
+ 	console.log(panel);   
+
+
+	    });
