@@ -1,0 +1,63 @@
+<!--
+  Copyright 2013, 2014 IBM Corp.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. --> 
+  <style>
+  #pn_upload .palette_label{color:#eeFFFF}
+  text.upload{fill:#eeFFFF}
+  #palette_node_upload{
+    color:#fff
+  }
+  </style>
+  <script type="text/x-red" data-template-name="upload">
+    <div class="form-row node-input-file">
+         <label for="node-input-file"><i class="icon-file"></i> File</label>
+         <input type="text" id="node-input-file" placeholder="">
+    </div>
+
+     <div class="form-row node-input-redirect">
+         <label for="node-input-redirect"><i class="icon-file"></i> Redirect</label>
+         <input type="text" id="node-input-redirect" placeholder="">
+     </div>
+
+
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div> 
+    </script>
+    <script type="text/x-red" data-help-name="upload">
+    <p> </p>
+    </script> 
+
+    <script type="text/javascript">
+    RED.nodes.registerType('upload',{
+        category: 'web',
+        defaults: {
+            name: {value:""},
+            file:{value:"", required:true},
+            redirect:{value:false, required:false},
+
+        },
+        color:"#343434",
+        inputs:1,
+        outputs:1,
+        icon: "white-globe.png",    
+        align: "right",
+        label: function() {
+            return this.name||this.file;
+        },
+        labelStyle: function() {
+            return this.name?"upload node_label_italic":"upload";
+        }
+    });
+    
+</script>

@@ -1,0 +1,131 @@
+<!--
+  Copyright 2013 IBM Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="mysql">
+    <div class="form-row node-input-server">
+        <label for="node-input-server"><i class="icon-bookmark"></i> Server</label>
+        <input class="input-append-left" type="text" id="node-input-server" style="width: 40%;" >
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-command"><i class="icon-th"></i> Command</label>
+        <textarea id="node-input-command" style="width: 250px;">        
+        </textarea>
+    </div>
+     <div class="form-row">
+        <label for="node-input-name"><i class="icon-th"></i> Name</label>
+        <input type="text" id="node-input-name" style="width: 250px;">
+        </input>
+    </div>
+    <div class="form-tips" id="command-help">
+        This node allows interaction with a mysql database.  All commands are edited using Mustache-style templates, they are interpreted dynamically based on inputs from the 'msg' input object, all values in msg.mysqlescape will be escaped using connection.escape().<br>
+    </div>
+    <style>
+       #node-input-command{
+         width:350px;
+         height:205px;
+       }
+       #command-arguments label{
+        width:250px;
+       }
+       .form-row input.command-argument {
+        width: 200px;
+        position: relative;
+        left: -150px;
+        top: 3px;
+       }
+       .small{
+            font-size:.8em;
+            display:inline;
+       }
+       p.msg-label{
+        position:relative;
+        top:4px;
+       }
+      .spacer.caret{
+        margin-left:10px; 
+      }
+      .dropdown-toggle p{float:left;padding:0px;margin:0px;}
+    </style>
+</script>
+
+<script type="text/x-red" data-help-name="mysql">
+	<p>A mysql Node with all commands available and configurable.</p>
+    <p>To run this you need a local mysql server running. For details see <a href="http://mysql.com/" target="_new">the mysql site</a>.</p>
+</script>
+<script>
+    RED.nodes.registerType('mysql',{
+        category: 'web-storage-output',
+        color:"#fffaaa",
+        defaults: {
+            server: {value:"", type:"mysql-server"},
+            command: {value:""},
+            name:{value:""},
+            arguments:{value:[], required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "mysql.png",
+        align: "right",
+        label: function() {
+            return this.name||this.command||"MySql";
+        },
+        oneditprepare: function() {
+            
+        },
+        oneditsave: function(){
+        
+
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="mysql-server">
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="icon-bookmark"></i> Host</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-port"><i class="icon-bookmark"></i> Port</label>
+        <input type="text" id="node-config-input-port">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-un"><i class="icon-bookmark"></i> Username</label>
+        <input type="text" id="node-config-input-un">
+    </div>
+     <div class="form-row">
+        <label for="node-config-input-pw"><i class="icon-bookmark"></i> Password</label>
+        <input type="password" id="node-config-input-pw">
+    </div>
+
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('mysql-server',{
+        category: 'config',
+        defaults: {
+            host: {value:"localhost",required:true},
+            port: {value:3306,required:true},
+            un: {value:"root", required:true},
+            pw: {value:"password", required:true}
+        },
+        label: function() {
+            return this.host+":"+this.port;
+        },
+        oneditsave:function(){console.log(this);}
+    });
+</script>

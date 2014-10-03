@@ -1,0 +1,40 @@
+{
+  "name": "WebDev Remote",
+  "version": "0.1",
+  "description": "Saves changes remotely in assets edited by Chrome devtools.  Tested with node-red.",
+
+  "devtools_page": "devtools.html",
+	"options_page": "options.html",
+  "content_scripts": [
+     {
+     "matches":["*://*/*"],
+     "js": ["content.js"]
+     }
+  ],
+	"background": {
+		"scripts": ["background.js"]
+	},
+
+  "icons": {
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "browser_action": {
+    "default_icon": {                    
+      "19": "icon_19.png",
+      "38": "icon_38.png"
+    },
+    "default_title": "WebDev Remote"   
+  },
+  "permissions": [
+    "notifications",
+    "<all_urls>",
+    "tabs",
+    "storage",
+    "contextMenus"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self';default-src *;connect-src *",
+  "manifest_version": 2,
+  "minimum_chrome_version": "20"
+}

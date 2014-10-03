@@ -1,0 +1,45 @@
+{
+  "name": "node-red-web-nodes",
+  "version": "0.0.1",
+  "description": "Web authoring, hosting, and administration nodes for the node-red project",
+  "main": "null",
+  "scripts": {
+    "postinstall": "node ./postinstall.js",
+    "preuninstall": "node ./uninstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TJKoury/node-red-web-nodes.git"
+  },
+  "author": "TJKoury",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TJKoury/node-red-web-nodes/issues"
+  },
+  "homepage": "https://github.com/TJKoury/node-red-web-nodes",
+  "dependencies": {
+    "browserify": "^4.2.0",
+    "busboy": "^0.2.8",
+    "inliner": "^0.1.16",
+    "jshint": "^2.5.1",
+    "media-typer": "^0.2.0",
+    "mysql": "^2.4.3",
+    "redis": "^0.10.3",
+    "soap": "^0.5.1",
+    "uglifyify": "^2.4.0",
+    "xlsx": "^0.7.10"
+  },
+  "devDependencies": {},
+  "node-red": {
+    "nodes": {
+      "browserify": "browserify/browserify.js",
+      "redis": "redis/redis.js",
+      "folder out": "folder/folder.js",
+      "deploy": "deploy/deploy.js",
+      "http in regex": "http_regex/http_regex.js",
+      "httpserver": "httpserver/http_server.js",
+      "mysql": "mysql/mysql.js",
+      "upload": "upload/upload.js"
+    }
+  }
+}

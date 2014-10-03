@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>WebDev Remote</title>
+    <link rel="stylesheet" href="options.css"/>
+</head>
+<body class="metro">
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"><h1>WebDev Remote</h1></a>
+    </div>
+  </div>
+</div>
+  <form id="mainform">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+          <span class="input-group-addon">Server: </span>  
+          <input type="text" id="server" required pattern="[^\/\:]*" title="Do not use ':' or '/' characters, use domain name only." class="form-control"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-md-6">
+        <div class="input-control checkbox">
+           <label>
+            <!--<input id="usecurrent" type="checkbox" data-show="intermediate" />
+            <span class="check"></span>
+            Use Current Site-->
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+        <span class="input-group-addon">Path: </span>  
+        <input type="text" id="path" required pattern="^\/[^\:]*" title="Path must start with '/' character, must not include ':'" class="form-control"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+       <div class="input-control checkbox">
+          <label>
+           <!-- <input id="websockets" type="checkbox" data-show="intermediate" />
+            <span class="check"></span>
+            Use Websockets instead of HTTP POST-->
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+        <span class="input-group-addon">Port: </span>  
+        <input type="number" required pattern="\d{1,5}" size="5" min="0" max="65535" maxlength="5" id="port" class="form-control"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">  
+        <div class="input-control checkbox">
+          <label>
+            <input id="secure" type="checkbox" data-show="intermediate" />
+            <span class="check"></span>
+            Use SSL/TLS
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1 col-md-3">
+        <button type="submit" id="save" class="btn btn-primary">Save</button>
+      </div>
+      <div class="col-sm-8 col-md-3">
+        <div id="status"></div>
+      </div>
+    </div>
+  </div>    
+  </form>
+   <script src="options.js"></script>
+</body>
+</html>
